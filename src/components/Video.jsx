@@ -1,4 +1,5 @@
-function Video() {
+function Video({ videos }) {
+  console.log(videos);
   return <div>Video</div>;
 }
 

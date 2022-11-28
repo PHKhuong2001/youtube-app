@@ -1,9 +1,7 @@
 import { Stack } from "@mui/material";
-import { useState } from "react";
+// import { useState } from "react";
 import { categories } from "../utils/constants";
-function Sidebar() {
-  const [selected, setSelected] = useState("New");
-  console.log(selected);
+function Sidebar({ selectedCategory, setSelectedCategory }) {
   return (
     <Stack
       direction="row"
@@ -16,16 +14,19 @@ function Sidebar() {
       {categories.map((category) => {
         return (
           <button
+            key={category.name}
             className="category-btn"
             style={{
-              background: category.name === selected && "#FC1503",
+              background: category.name === selectedCategory && "#FC1503",
               color: "#fff",
             }}
-            onClick={() => setSelected(category.name)}
+            onClick={() => {
+              setSelectedCategory(category.name);
+            }}
           >
             <span
               style={{
-                color: category.name === selected ? "white" : "red",
+                color: category.name === selectedCategory ? "white" : "red",
                 marginRight: "15px",
               }}
             >
