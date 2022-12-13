@@ -8,11 +8,9 @@ function ChannelDetail() {
   const { id } = useParams();
   const [channelDetail, setChannelDetail] = useState(null);
   const [videos, setVideos] = useState([]);
-  console.log(videos);
   useEffect(() => {
     const fetchResult = async () => {
       const data = await fetchFromAPI(`channels?part=snippet&id=${id}`);
-
       setChannelDetail(data?.items[0]);
 
       const videosData = await fetchFromAPI(
@@ -35,6 +33,10 @@ function ChannelDetail() {
           }}
         ></div>
         <ChannelCard channelDetail={channelDetail} mt="-93px"></ChannelCard>
+      </Box>
+      <Box display="flex" p="2">
+        <Box sx={{ mr: { sm: "100px" } }} />
+        <Video videos={videos} />
       </Box>
     </Box>
   );
